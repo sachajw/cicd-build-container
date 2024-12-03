@@ -1,0 +1,7 @@
+platform: 'github'
+onboarding: true
+onboardingConfig:
+  extends:
+    - config:base
+repositories:
+  - sachajw/cicd-build-container
