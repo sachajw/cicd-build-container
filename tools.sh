@@ -6,8 +6,8 @@ LOCAL_DIR="$HOME/.local"
 BASHRC="$HOME/.bashrc"
 SDKMAN_CANDIDATES_API="https://api.sdkman.io/2"
 SDKMAN_DIR="$HOME/.sdkman"
-ZSH_SHELL="false"
-BASH_SHELL="true"
+# ZSH_SHELL="false"
+# BASH_SHELL="true"
 
 # Create local bin directory and update PATH
 mkdir -p "$LOCAL_DIR"
@@ -26,17 +26,14 @@ apt-get install -y python3 python3-dev git-all podman \
 
 # Install SDKMAN and Java
 echo "Installing SDKMAN and Java..."
-if [ ! -d "$SDKMAN_DIR" ]; then
-    curl -s "https://get.sdkman.io" | bash
-else
-    echo "SDKMAN is already installed. Skipping installation."
-fi
-export SDKMAN_CANDIDATES_API="$SDKMAN_CANDIDATES_API"
-export SDKMAN_DIR="$SDKMAN_DIR"
-export ZSH_SHELL="$ZSH_SHELL"
-export BASH_SHELL="$BASH_SHELL"
-export ZSH_VERSION="$ZSH_SHELL"
-export BASH_VERSION="$BASH_SHELL"
+curl -s "https://get.sdkman.io?rcupdate=false" | bash
+
+# export SDKMAN_CANDIDATES_API="$SDKMAN_CANDIDATES_API"
+# export SDKMAN_DIR="$SDKMAN_DIR"
+# export ZSH_SHELL="$ZSH_SHELL"
+# export BASH_SHELL="$BASH_SHELL"
+# export ZSH_VERSION="$ZSH_SHELL"
+# export BASH_VERSION="$BASH_SHELL"
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
 sdk install java maven
 sdk env init && sdk env
