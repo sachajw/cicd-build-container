@@ -5,6 +5,7 @@ set -veu
 LOCAL_DIR="$HOME/.local"
 BASHRC="$HOME/.bashrc"
 SDKMAN_CANDIDATES_API="https://api.sdkman.io/2"
+SDKMAN_DIR="$HOME/.sdkman"
 
 # Create local bin directory and update PATH
 mkdir -p "$LOCAL_DIR"
@@ -23,13 +24,14 @@ apt-get install -y python3 python3-dev maven git-all podman \
 
 # Install SDKMAN and Java
 echo "Installing SDKMAN and Java..."
-if [ ! -d "$HOME/.sdkman" ]; then
+if [ ! -d "$SDKMAN_DIR" ]; then
     curl -s "https://get.sdkman.io" | bash
 else
     echo "SDKMAN is already installed. Skipping installation."
 fi
 export SDKMAN_CANDIDATES_API="$SDKMAN_CANDIDATES_API"
-source "$HOME/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$SDKMAN_DIR"
+source "$SDKMAN_DIR/bin/sdkman-init.sh"
 sdk install java
 sdk env init && sdk env
 java --version
