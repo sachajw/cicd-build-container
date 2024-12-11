@@ -70,6 +70,16 @@ echo "Installing ytt..."
 curl -L -o /usr/local/bin/ytt https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.40.1/ytt-linux-amd64
 chmod +x /usr/local/bin/ytt
 
+# Determine shell
+zsh_shell=false
+bash_shell=false
+
+if [ -n "${ZSH_VERSION-}" ]; then
+    zsh_shell=true
+elif [ -n "${BASH_VERSION-}" ]; then
+    bash_shell=true
+fi
+
 # Final system cleanup
 echo "Performing final cleanup..."
 apt-get update && apt-get upgrade -y
