@@ -21,7 +21,7 @@ apt-get update && apt-get upgrade -y
 
 # Install essential packages
 echo "Installing essential packages..."
-apt-get install -y python3 python3-dev maven git-all podman \
+apt-get install -y python3 python3-dev git-all podman \
     ca-certificates curl gnupg lsb-release unzip zip
 
 # Install SDKMAN and Java
@@ -35,8 +35,10 @@ export SDKMAN_CANDIDATES_API="$SDKMAN_CANDIDATES_API"
 export SDKMAN_DIR="$SDKMAN_DIR"
 export ZSH_SHELL="$ZSH_SHELL"
 export BASH_SHELL="$BASH_SHELL"
+export ZSH_VERSION="$ZSH_SHELL"
+export BASH_VERSION="$BASH_SHELL"
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
-sdk install java
+sdk install java maven
 sdk env init && sdk env
 java --version
 
