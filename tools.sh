@@ -13,6 +13,10 @@ echo 'export PATH="$HOME/.local:$PATH"' >> "$BASHRC"
 echo "Updating and upgrading Ubuntu packages..."
 apt-get update && apt-get upgrade -y
 
+# Install curl
+echo "Installing Curl..."
+apt-get install curl -y
+
 # Install Python3 and development tools
 echo "Installing Python3..."
 apt-get install -y python3 python3-dev
@@ -38,10 +42,6 @@ git --version
 # Install Git Large File Storage (LFS)
 echo "Installing Git LFS..."
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
-
-# Install Podman
-echo "Installing Podman..."
-apt-get install -y podman
 
 # Install Docker
 echo "Installing Docker..."
