@@ -35,8 +35,13 @@ export BASH_SHELL="$BASH_SHELL"
 export ZSH_VERSION="$ZSH_SHELL"
 export BASH_VERSION="$BASH_SHELL"
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
+# Set SDKMAN environment defaults
+: "${sdkman_curl_connect_timeout:=7}"
+: "${sdkman_curl_max_time:=10}"
+: "${sdkman_curl_retry:=0}"
+
 sdk install java maven
-sdk env init && sdk env && sdk current java && sdk current maven
+sdk env init && sdk env && sdk current
 
 # Install Git Large File Storage (LFS)
 echo "Installing Git LFS..."
